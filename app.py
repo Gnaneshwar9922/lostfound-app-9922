@@ -182,16 +182,79 @@ def login():
         return "Invalid login"
 
     return render_template_string("""
-        <h2>Login</h2>
-        <form method="POST">
-            <input name="username" required><br>
-            <input name="password" type="password" required><br>
-            <button type="submit">Login</button>
-        </form>
-        <a href="/register">Register</a>
-    """)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #00c6ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0072ff;
+        }
+
+        a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2><i class="fa fa-user"></i> Login</h2>
+
+    <form method="POST">
+        <input name="username" placeholder="Username" required><br>
+        <input name="password" type="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <p>New user? <a href="/register">Register</a></p>
+</div>
+
+</body>
+</html>
+""")
 # ---------------- USER DASHBOARD ----------------
 @app.route("/dashboard")
 def dashboard():
