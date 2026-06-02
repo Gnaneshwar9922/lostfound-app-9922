@@ -42,7 +42,99 @@ with app.app_context():
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
-    return redirect("/login")
+    return render_template_string("""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost & Found App</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            background: rgba(0,0,0,0.3);
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+        .icons {
+            margin-top: 40px;
+            font-size: 40px;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+        }
+
+        .nav i {
+            margin: 0 20px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔍 Lost & Found AI System</h1>
+    <p>Find your lost items or report found items easily</p>
+
+    <a class="btn" href="/login"><i class="fa fa-user"></i> Login</a>
+    <a class="btn" href="/register"><i class="fa fa-user-plus"></i> Register</a>
+
+    <div class="icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-box"></i>
+        <i class="fa fa-shield"></i>
+    </div>
+</div>
+
+<!-- Bottom Navigation -->
+<div class="nav">
+    <i class="fa fa-home"></i>
+    <i class="fa fa-search"></i>
+    <i class="fa fa-user"></i>
+    <i class="fa fa-cog"></i>
+</div>
+
+</body>
+</html>
+""")
 
 
 # ---------------- REGISTER ----------------
